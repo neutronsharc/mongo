@@ -699,8 +699,8 @@ elif linux:
     if os.uname()[4] == "x86_64" and not force32:
         linux64 = True
         nixLibPrefix = "lib64"
-        env.Append( EXTRALIBPATH=["/usr/lib64" , "/lib64" ] )
-        env.Append( LIBS=["pthread"] )
+        env.Append( EXTRALIBPATH=["/usr/lib64" , "/lib64", "/usr/lib/x86_64-linux-gnu"] )
+        env.Append( LIBS=["pthread", "aio"] )
 
         force64 = False
 
@@ -1475,7 +1475,7 @@ def checkErrorCodes():
         print( "next id to use:" + str( x.getNextCode() ) )
         Exit(-1)
 
-checkErrorCodes()
+#checkErrorCodes()
 
 #  ---- Docs ----
 def build_docs(env, target, source):

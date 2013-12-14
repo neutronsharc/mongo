@@ -1,0 +1,21 @@
+# -*- mode: python -*-
+
+Import("env")
+
+env.Library(target = 'hybrid_memory',
+            source = ['hybrid_memory.cc',
+                      'page_cache.cc',		      
+		      'flash_cache.cc',
+		      'ram_cache.cc',
+		      'avl.cc',
+		      'vaddr_range.cc',
+		      'sigsegv_handler.cc',
+		      'utils.cc',
+		      'hash.cc',
+		      'hybrid_memory_lib.cc',
+		      'page_allocation_table.cc',
+		      'page_stats_table.cc',
+		      'asyncio_manager.cc',
+		      'asyncio_request.cc'],
+	    LIBS = ['pthread', 'aio', 'rt'],
+	    LIBPATH = ['/usr/lib/x86_64-linux-gnu'])
